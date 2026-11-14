@@ -31,12 +31,12 @@ public class ModAdvancedFishing {
         AdvancedFishingAPI.PARTICLES_MANAGER = ParticlesManager.INSTANCE;
         AdvancedFishingAPI.CATCH_MANAGER = CatchManager.INSTANCE;
         AdvancedFishingAPI.MATERIAL_MANAGER = MaterialManager.INSTANCE;
-        AdvancedFishingAPI.FISH_TAB = AFTabs.ADVANCED_FISHING_TAB;
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AFConfig.SPEC, ModInfo.ID + ".toml");
 
         var eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        AFTabs.register(eventBus);
         AFItems.register(eventBus);
         AFEntities.register(eventBus);
 

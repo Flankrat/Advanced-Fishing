@@ -1,5 +1,6 @@
 package nightkosh.advanced_fishing.gametest;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.SimpleContainer;
@@ -14,7 +15,6 @@ import nightkosh.advanced_fishing.api.EnumFishType;
 import nightkosh.advanced_fishing.api.ModInfo;
 import nightkosh.advanced_fishing.core.AFItems;
 
-import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 import static nightkosh.advanced_fishing.ModAdvancedFishing.LOGGER;
 
 @GameTestHolder(ModInfo.ID)
@@ -306,7 +306,7 @@ public class SmokingRecipesTests {
     protected static void defaultTest(GameTestHelper helper, String recipeName, Item input, ItemStack expected) {
         var level = helper.getLevel();
 
-        var res = fromNamespaceAndPath(ModInfo.ID, "smoking/" + recipeName);
+        var res = new ResourceLocation(ModInfo.ID, "smoking/" + recipeName);
         var recipeByKey = level.getRecipeManager().byKey(res);
 
         if (recipeByKey.isEmpty()) {

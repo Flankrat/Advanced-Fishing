@@ -1,5 +1,7 @@
 package nightkosh.advanced_fishing.gametest;
 
+import net.minecraft.world.inventory.TransientCraftingContainer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +22,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
-import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 import static nightkosh.advanced_fishing.ModAdvancedFishing.LOGGER;
 
 @GameTestHolder(ModInfo.ID)
@@ -249,7 +250,7 @@ public class CraftingRecipesTests {
     protected static void defaultTest(GameTestHelper helper, String recipeName, List<Pair<Integer, Item>> inputs, ItemStack expected) {
         var level = helper.getLevel();
 
-        var res = fromNamespaceAndPath(ModInfo.ID, recipeName);
+        var res = new ResourceLocation(ModInfo.ID, recipeName);
         var recipeByKey = level.getRecipeManager().byKey(res);
 
         if (recipeByKey.isEmpty()) {
@@ -275,7 +276,7 @@ public class CraftingRecipesTests {
             }
         };
 
-        var crafting = new CraftingContainer(dummyMenu, 3, 3);
+        var crafting = new TransientCraftingContainer(dummyMenu, 3, 3);
         for (var pair : inputs) {
             crafting.setItem(pair.getKey(), new ItemStack(pair.getValue()));
         }

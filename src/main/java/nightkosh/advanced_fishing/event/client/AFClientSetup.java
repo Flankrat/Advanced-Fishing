@@ -28,7 +28,7 @@ public class AFClientSetup {
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> ItemProperties.register(
                 AFItems.getBlazingFishingPole(),
-                ResourceLocation.parse("cast"),
+                new ResourceLocation("cast"),
                 (stack, level, entity, seed) -> {
                     if (entity == null) {
                         return 0;
